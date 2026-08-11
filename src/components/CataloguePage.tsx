@@ -141,7 +141,7 @@ function Hero() {
         <img
           src={hero}
           alt="Woman wearing a One Path Fashion chiffon shawl at golden hour"
-          className="h-[115%] w-full object-cover object-[70%_center] sm:object-center"
+          className="h-[115%] w-full object-cover object-[70%_center] md:object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-black/55 via-black/20 to-black/65 sm:bg-gradient-to-b sm:from-black/45 sm:via-black/15 sm:to-black/60" />
         <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/10 to-transparent sm:hidden" />
