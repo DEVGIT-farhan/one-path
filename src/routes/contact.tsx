@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
-import { business, waLink } from "@/lib/business";
+import { company, waLink } from "@/lib/company";
 import { shawls, CATEGORY, PRICE } from "@/lib/shawls";
+import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import logoBlack from "@/assets/logo-black.svg";
 import logoWhite from "@/assets/logo-white.svg";
 import {
@@ -37,7 +38,7 @@ const faqs = [
   },
   {
     q: "What does one shawl cost?",
-    a: `Every ${CATEGORY.toLowerCase()} is ${business.currency} ${PRICE}, regardless of shade. Bundle pricing for three or more pieces is available on request.`,
+    a: `Every ${CATEGORY.toLowerCase()} is ${company.currency} ${PRICE}, regardless of shade. Bundle pricing for three or more pieces is available on request.`,
   },
   {
     q: "Are all ten shades in stock?",
@@ -64,7 +65,7 @@ function EnquiryForm() {
   const [message, setMessage] = useState("");
 
   const composed = waLink(
-    `Assalamu alaikum ${business.name}!\n\nName: ${name || "—"}\nProduct: ${CATEGORY}\nShade: ${shade}\nQuantity: ${qty}\n\n${message || "I'd like to enquire about availability."}`,
+    `Assalamu alaikum ${company.name}!\n\nName: ${name || "—"}\nProduct: ${CATEGORY}\nShade: ${shade}\nQuantity: ${qty}\n\n${message || "I'd like to enquire about availability."}`,
   );
 
   return (
@@ -83,7 +84,7 @@ function EnquiryForm() {
           value={name}
           onChange={(e) => setName(e.target.value)}
           required
-          className="border-b border-border bg-transparent py-2 outline-none transition-colors focus:border-foreground"
+          className="min-h-11 border-b border-border bg-transparent py-2 text-base outline-none transition-colors focus:border-foreground"
           placeholder="Full name"
         />
       </label>
@@ -96,7 +97,7 @@ function EnquiryForm() {
           <select
             value={shade}
             onChange={(e) => setShade(e.target.value)}
-            className="border-b border-border bg-transparent py-2 outline-none transition-colors focus:border-foreground"
+            className="min-h-11 border-b border-border bg-transparent py-2 text-base outline-none transition-colors focus:border-foreground"
           >
             {shawls.map((s) => (
               <option key={s.hex} value={s.name}>
@@ -114,7 +115,7 @@ function EnquiryForm() {
             min="1"
             value={qty}
             onChange={(e) => setQty(e.target.value)}
-            className="border-b border-border bg-transparent py-2 outline-none transition-colors focus:border-foreground"
+            className="min-h-11 border-b border-border bg-transparent py-2 text-base outline-none transition-colors focus:border-foreground"
           />
         </label>
       </div>
@@ -127,14 +128,14 @@ function EnquiryForm() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           rows={4}
-          className="border-b border-border bg-transparent py-2 outline-none transition-colors focus:border-foreground"
+          className="border-b border-border bg-transparent py-2 text-base outline-none transition-colors focus:border-foreground"
           placeholder="Anything you'd like us to know"
         />
       </label>
 
       <button
         type="submit"
-        className="mt-2 border border-foreground bg-foreground px-8 py-3 text-[0.65rem] tracking-[0.3em] uppercase text-background transition-colors hover:bg-transparent hover:text-foreground"
+        className="mt-2 min-h-11 w-full border border-foreground bg-foreground px-8 py-3 text-[0.65rem] tracking-[0.24em] uppercase text-background transition-colors hover:bg-transparent hover:text-foreground sm:w-auto sm:tracking-[0.3em]"
       >
         Send on WhatsApp
       </button>
@@ -149,23 +150,29 @@ function ContactPage() {
   return (
     <main className="bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50 bg-background/85 py-3 backdrop-blur-md shadow-[0_1px_0_0_var(--color-border)]">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6">
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logoBlack} alt={business.name} className="h-10 w-10" />
-            <span className="font-display text-sm tracking-[0.35em] uppercase">
+            <img src={logoBlack} alt={company.name} className="h-10 w-10" />
+            <span className="font-display text-xs tracking-[0.3em] uppercase sm:text-sm sm:tracking-[0.35em]">
               One Path
             </span>
           </Link>
-          <nav className="flex gap-10 text-xs tracking-[0.25em] uppercase text-muted-foreground">
+          <nav className="hidden gap-10 text-xs tracking-[0.25em] uppercase text-muted-foreground sm:flex">
             <Link to="/" className="transition-colors hover:text-foreground">
               Catalogue
             </Link>
             <span className="text-foreground">Contact</span>
           </nav>
+          <Link
+            to="/"
+            className="flex min-h-11 items-center text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground transition-colors hover:text-foreground sm:hidden"
+          >
+            Catalogue
+          </Link>
         </div>
       </header>
 
-      <section className="mx-auto max-w-6xl px-6 pt-36 pb-16 md:pt-44">
+      <section className="mx-auto max-w-6xl px-4 pt-28 pb-14 sm:px-6 md:pt-44 md:pb-16">
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
@@ -178,7 +185,7 @@ function ContactPage() {
           initial={{ opacity: 0, y: 26 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mt-5 max-w-3xl text-4xl leading-[1.1] md:text-6xl"
+          className="mt-5 max-w-3xl text-[2.25rem] leading-[1.1] md:text-6xl"
         >
           Order, enquire, or simply say salaam.
         </motion.h1>
@@ -190,7 +197,7 @@ function ContactPage() {
         />
       </section>
 
-      <section className="mx-auto grid max-w-6xl gap-14 px-6 pb-24 md:grid-cols-12">
+      <section className="mx-auto grid max-w-6xl gap-12 px-4 pb-20 sm:px-6 md:grid-cols-12 md:gap-14 md:pb-24">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -201,29 +208,29 @@ function ContactPage() {
           <h2 className="font-display text-2xl">Reach us</h2>
           <dl className="mt-8 divide-y divide-border border-y border-border">
             {[
-              { k: "WhatsApp", v: business.whatsappDisplay },
-              { k: "Email", v: business.email },
-              { k: "Studio", v: business.address },
-              { k: "Hours", v: business.hours },
+              { k: "WhatsApp", v: company.whatsappDisplay },
+              { k: "Email", v: company.email },
+              { k: "Studio", v: company.address },
+              { k: "Hours", v: company.hours },
             ].map((row) => (
               <div
                 key={row.k}
-                className="flex items-baseline justify-between gap-6 py-4"
+                className="flex flex-col items-start gap-1 py-4 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6"
               >
                 <dt className="text-[0.6rem] tracking-[0.3em] uppercase text-muted-foreground">
                   {row.k}
                 </dt>
-                <dd className="text-right text-sm">{row.v}</dd>
+                <dd className="text-sm sm:text-right">{row.v}</dd>
               </div>
             ))}
           </dl>
           <a
             href={waLink(
-              `Assalamu alaikum ${business.name}, I'd like to know more about your chiffon shawls.`,
+              `Assalamu alaikum ${company.name}, I'd like to know more about your chiffon shawls.`,
             )}
             target="_blank"
             rel="noreferrer"
-            className="mt-8 inline-block border border-foreground px-8 py-3 text-[0.65rem] tracking-[0.3em] uppercase transition-colors hover:bg-foreground hover:text-background"
+            className="mt-8 inline-flex min-h-11 items-center justify-center border border-foreground px-6 py-3 text-[0.65rem] tracking-[0.24em] uppercase transition-colors hover:bg-foreground hover:text-background sm:px-8 sm:tracking-[0.3em]"
           >
             Chat on WhatsApp
           </a>
@@ -243,8 +250,8 @@ function ContactPage() {
         </motion.div>
       </section>
 
-      <section className="border-y border-border bg-secondary/30 py-24">
-        <div className="mx-auto grid max-w-6xl gap-12 px-6 md:grid-cols-12">
+      <section className="border-y border-border bg-secondary/30 py-20 md:py-24">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 md:grid-cols-12">
           <div className="md:col-span-4">
             <p className="text-[0.65rem] tracking-[0.4em] uppercase text-muted-foreground">
               FAQ
@@ -271,9 +278,9 @@ function ContactPage() {
       </section>
 
       <footer className="bg-foreground py-16 text-white/70">
-        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-6 text-center">
-          <img src={logoWhite} alt={business.name} className="h-14 w-14" />
-          <p className="font-display text-lg text-white">{business.tagline}</p>
+        <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center sm:px-6">
+          <img src={logoWhite} alt={company.name} className="h-14 w-14" />
+          <p className="font-display text-lg text-white">{company.tagline}</p>
           <Link
             to="/"
             className="text-[0.65rem] tracking-[0.3em] uppercase hover:text-white"
@@ -282,6 +289,7 @@ function ContactPage() {
           </Link>
         </div>
       </footer>
+      <FloatingWhatsApp />
     </main>
   );
 }

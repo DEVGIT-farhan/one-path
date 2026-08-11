@@ -1,9 +1,9 @@
-// Placeholder business details — replace with real values.
-export const business = {
+// Replace these placeholders with the company's real contact details before publishing.
+export const company = {
   name: "One Path Fashion",
   tagline: "Modesty is the highest elegance.",
-  whatsapp: "910000000000", // placeholder: country code + number, digits only
-  whatsappDisplay: "+91 00000 00000",
+  whatsapp: "917904199810", // Country code + number, digits only
+  whatsappDisplay: "+91 79041 99810",
   email: "hello@onepathfashion.com",
   address: "Shop Address Line 1, City, State — 000000",
   hours: "Mon – Sat, 10:00 – 19:00",
@@ -13,5 +13,5 @@ export const business = {
 };
 
 export function waLink(message: string) {
-  return `https://wa.me/${business.whatsapp}?text=${encodeURIComponent(message)}`;
+  return `https://wa.me/${company.whatsapp}?text=${encodeURIComponent(message)}`;
 }
