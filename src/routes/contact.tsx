@@ -154,7 +154,7 @@ function ContactPage() {
           <Link to="/" className="flex items-center gap-3">
             <img src={logoBlack} alt={company.name} className="h-10 w-10" />
             <span className="font-display text-xs tracking-[0.3em] uppercase sm:text-sm sm:tracking-[0.35em]">
-              One Path
+              One Path Fashion
             </span>
           </Link>
           <nav className="hidden gap-10 text-xs tracking-[0.25em] uppercase text-muted-foreground sm:flex">

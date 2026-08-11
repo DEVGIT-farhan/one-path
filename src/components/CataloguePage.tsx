@@ -54,7 +54,7 @@ function Header() {
               hasSolidBackground ? "text-foreground" : "text-white"
             }`}
           >
-            One Path
+            One Path Fashion
           </span>
         </a>
         <nav
