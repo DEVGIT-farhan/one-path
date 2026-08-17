@@ -4,6 +4,7 @@ import { motion } from "motion/react";
 import { company, waLink } from "@/lib/company";
 import { shawls, CATEGORY, PRICE } from "@/lib/shawls";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import logoBlack from "@/assets/logo-black.svg";
 import logoWhite from "@/assets/logo-white.svg";
 import {
@@ -152,23 +153,35 @@ function ContactPage() {
       <header className="fixed inset-x-0 top-0 z-50 bg-background/85 py-3 backdrop-blur-md shadow-[0_1px_0_0_var(--color-border)]">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logoBlack} alt={company.name} className="h-10 w-10" />
+            <img
+              src={logoBlack}
+              alt={company.name}
+              className="h-10 w-10 dark:hidden"
+            />
+            <img
+              src={logoWhite}
+              alt={company.name}
+              className="hidden h-10 w-10 dark:block"
+            />
             <span className="font-display text-xs tracking-[0.3em] uppercase sm:text-sm sm:tracking-[0.35em]">
               One Path Fashion
             </span>
           </Link>
-          <nav className="hidden gap-10 text-xs tracking-[0.25em] uppercase text-muted-foreground sm:flex">
-            <Link to="/" className="transition-colors hover:text-foreground">
+          <div className="flex items-center gap-3">
+            <nav className="hidden gap-10 text-xs tracking-[0.25em] uppercase text-muted-foreground sm:flex">
+              <Link to="/" className="transition-colors hover:text-foreground">
+                Catalogue
+              </Link>
+              <span className="text-foreground">Contact</span>
+            </nav>
+            <Link
+              to="/"
+              className="flex min-h-11 items-center text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground transition-colors hover:text-foreground sm:hidden"
+            >
               Catalogue
             </Link>
-            <span className="text-foreground">Contact</span>
-          </nav>
-          <Link
-            to="/"
-            className="flex min-h-11 items-center text-[0.65rem] tracking-[0.2em] uppercase text-muted-foreground transition-colors hover:text-foreground sm:hidden"
-          >
-            Catalogue
-          </Link>
+            <ThemeToggle />
+          </div>
         </div>
       </header>
 
@@ -277,7 +290,7 @@ function ContactPage() {
         </div>
       </section>
 
-      <footer className="bg-foreground py-16 text-white/70">
+      <footer className="bg-foreground py-16 text-white/70 dark:bg-black">
         <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center sm:px-6">
           <img src={logoWhite} alt={company.name} className="h-14 w-14" />
           <p className="font-display text-lg text-white">{company.tagline}</p>

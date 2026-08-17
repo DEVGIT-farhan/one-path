@@ -6,6 +6,7 @@ import { shawls, CATEGORY, PRICE } from "@/lib/shawls";
 import { company, waLink } from "@/lib/company";
 import { useReveal } from "@/hooks/use-reveal";
 import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import logoBlack from "@/assets/logo-black.svg";
 import logoWhite from "@/assets/logo-white.svg";
 import hero from "@/assets/Hero.png";
@@ -44,11 +45,26 @@ function Header() {
     >
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#top" className="flex items-center gap-3">
-          <img
-            src={hasSolidBackground ? logoBlack : logoWhite}
-            alt="One Path Fashion"
-            className="h-10 w-10 transition-opacity duration-500"
-          />
+          {hasSolidBackground ? (
+            <>
+              <img
+                src={logoBlack}
+                alt="One Path Fashion"
+                className="h-10 w-10 transition-opacity duration-500 dark:hidden"
+              />
+              <img
+                src={logoWhite}
+                alt="One Path Fashion"
+                className="hidden h-10 w-10 transition-opacity duration-500 dark:block"
+              />
+            </>
+          ) : (
+            <img
+              src={logoWhite}
+              alt="One Path Fashion"
+              className="h-10 w-10 transition-opacity duration-500"
+            />
+          )}
           <span
             className={`font-display text-xs tracking-[0.3em] uppercase transition-colors duration-500 sm:text-sm sm:tracking-[0.35em] ${
               hasSolidBackground ? "text-foreground" : "text-white"
@@ -76,22 +92,29 @@ function Header() {
             Contact
           </Link>
         </nav>
-        <button
-          type="button"
-          aria-expanded={menuOpen}
-          aria-controls="mobile-navigation"
-          onClick={() => setMenuOpen((open) => !open)}
-          className={`flex h-11 w-11 items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden ${
-            hasSolidBackground ? "text-foreground" : "text-white"
-          }`}
-        >
-          {menuOpen ? (
-            <X size={22} aria-hidden="true" />
+        <div className="flex items-center gap-1">
+          {hasSolidBackground ? (
+            <ThemeToggle />
           ) : (
-            <Menu size={22} aria-hidden="true" />
+            <ThemeToggle className="border-white/60 bg-black/20 text-white hover:bg-white hover:text-foreground" />
           )}
-          <span className="sr-only">{menuOpen ? "Close" : "Open"} menu</span>
-        </button>
+          <button
+            type="button"
+            aria-expanded={menuOpen}
+            aria-controls="mobile-navigation"
+            onClick={() => setMenuOpen((open) => !open)}
+            className={`flex h-11 w-11 items-center justify-center transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring md:hidden ${
+              hasSolidBackground ? "text-foreground" : "text-white"
+            }`}
+          >
+            {menuOpen ? (
+              <X size={22} aria-hidden="true" />
+            ) : (
+              <Menu size={22} aria-hidden="true" />
+            )}
+            <span className="sr-only">{menuOpen ? "Close" : "Open"} menu</span>
+          </button>
+        </div>
       </div>
       <nav
         id="mobile-navigation"
@@ -578,7 +601,7 @@ function Styling() {
 
 function Footer() {
   return (
-    <footer className="bg-foreground py-16 text-white/70">
+    <footer className="bg-foreground py-16 text-white/70 dark:bg-black">
       <div className="mx-auto flex max-w-6xl flex-col items-center gap-6 px-4 text-center sm:px-6">
         <img src={logoWhite} alt="One Path Fashion" className="h-14 w-14" />
         <p className="font-display text-lg text-white">{TAGLINE}</p>
