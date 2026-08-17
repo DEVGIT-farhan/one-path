@@ -4,6 +4,7 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  base: process.env["GITHUB_ACTIONS"] === "true" ? "/one-path/" : "/",
+  // GitHub Pages serves the site from the root of onepathfashion.com.
+  base: "/",
   plugins: [react(), tailwindcss(), tsconfigPaths()],
 });
