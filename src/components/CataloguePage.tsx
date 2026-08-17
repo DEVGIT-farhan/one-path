@@ -455,7 +455,7 @@ function ShadeCard({
             href={order}
             target="_blank"
             rel="noreferrer"
-            className="mt-4 inline-block border border-white/70 px-4 py-2 text-[0.6rem] tracking-[0.25em] uppercase text-white transition-colors hover:bg-white hover:text-foreground"
+            className="mt-4 inline-block border border-white/70 px-4 py-2 text-[0.6rem] tracking-[0.25em] uppercase text-white transition-colors hover:bg-white hover:text-foreground dark:hover:border-primary dark:hover:bg-primary dark:hover:text-primary-foreground"
           >
             Order on WhatsApp
           </a>
