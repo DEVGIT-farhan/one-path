@@ -29,7 +29,7 @@ export function FloatingWhatsApp() {
         className="whatsapp-pulse absolute inset-0 rounded-full bg-[#25D366]"
       />
       <WhatsAppIcon />
-      <span className="pointer-events-none absolute top-1/2 right-16 hidden -translate-y-1/2 translate-x-2 whitespace-nowrap bg-foreground px-3 py-2 text-[0.6rem] tracking-[0.18em] uppercase text-white opacity-0 shadow-md transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 sm:block">
+      <span className="pointer-events-none absolute top-1/2 right-16 hidden -translate-y-1/2 translate-x-2 whitespace-nowrap bg-foreground px-3 py-2 text-[0.6rem] tracking-[0.18em] uppercase text-white opacity-0 shadow-md transition-all duration-200 group-hover:translate-x-0 group-hover:opacity-100 sm:block dark:bg-card dark:text-card-foreground">
         Order on WhatsApp
       </span>
       <span className="sr-only">Chat on WhatsApp</span>
