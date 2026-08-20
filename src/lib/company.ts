@@ -2,8 +2,8 @@
 export const company = {
   name: "One Path Fashion",
   tagline: "Modesty is the highest elegance.",
-  whatsapp: "917904199810", // Country code + number, digits only
-  whatsappDisplay: "+91 79041 99810",
+  whatsapp: "917806852271", // Country code + number, digits only
+  whatsappDisplay: "+91 78068 52271",
   email: "onepathfashion@gmail.com",
   address: "Chennai, Tamil Nadu, India",
   hours: "Mon – Sat, 10:00 – 19:00",
